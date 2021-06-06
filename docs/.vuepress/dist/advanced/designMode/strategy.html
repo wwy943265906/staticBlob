@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>策略模式 | Vim blog</title>
+    <meta name="generator" content="VuePress 1.8.0">
+    <link rel="icon" href="/logo.jpg">
+    <meta name="description" content="微信号：wwy943265906">
+    
+    <link rel="preload" href="/assets/css/0.styles.243019ca.css" as="style"><link rel="preload" href="/assets/js/app.b45ba90d.js" as="script"><link rel="preload" href="/assets/js/2.be6c4511.js" as="script"><link rel="preload" href="/assets/js/13.6711ccfc.js" as="script"><link rel="prefetch" href="/assets/js/10.7ac07ebc.js"><link rel="prefetch" href="/assets/js/11.e47ff8a7.js"><link rel="prefetch" href="/assets/js/12.03586f43.js"><link rel="prefetch" href="/assets/js/14.3cdf3aac.js"><link rel="prefetch" href="/assets/js/15.c0d1e868.js"><link rel="prefetch" href="/assets/js/16.e730b93b.js"><link rel="prefetch" href="/assets/js/17.06daca7e.js"><link rel="prefetch" href="/assets/js/18.abaecaad.js"><link rel="prefetch" href="/assets/js/19.55a9d369.js"><link rel="prefetch" href="/assets/js/20.c8896f7a.js"><link rel="prefetch" href="/assets/js/21.c6992788.js"><link rel="prefetch" href="/assets/js/22.7d949f8f.js"><link rel="prefetch" href="/assets/js/23.3e1dde94.js"><link rel="prefetch" href="/assets/js/24.40de0c9e.js"><link rel="prefetch" href="/assets/js/25.1589e04d.js"><link rel="prefetch" href="/assets/js/26.d3decd24.js"><link rel="prefetch" href="/assets/js/27.c6ffaca6.js"><link rel="prefetch" href="/assets/js/28.c734b24d.js"><link rel="prefetch" href="/assets/js/29.f070ab78.js"><link rel="prefetch" href="/assets/js/3.3fa6d8f0.js"><link rel="prefetch" href="/assets/js/30.43d162ee.js"><link rel="prefetch" href="/assets/js/31.86011124.js"><link rel="prefetch" href="/assets/js/32.cdba0184.js"><link rel="prefetch" href="/assets/js/4.c9f53216.js"><link rel="prefetch" href="/assets/js/5.e4e5b19a.js"><link rel="prefetch" href="/assets/js/6.3bcf225a.js"><link rel="prefetch" href="/assets/js/7.3da78413.js"><link rel="prefetch" href="/assets/js/8.c459cb09.js"><link rel="prefetch" href="/assets/js/9.2c1f5fae.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.243019ca.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Vim blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/advanced/promise/手撕promise.html" class="nav-link">
+  进阶理解
+</a></div><div class="nav-item"><a href="/source/vue2/reactive.html" class="nav-link">
+  源码分析
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/advanced/promise/手撕promise.html" class="nav-link">
+  进阶理解
+</a></div><div class="nav-item"><a href="/source/vue2/reactive.html" class="nav-link">
+  源码分析
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>进阶准备</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>设计模式</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/advanced/designMode/single.html" class="sidebar-link">单例模式</a></li><li><a href="/advanced/designMode/command.html" class="sidebar-link">命令模式</a></li><li><a href="/advanced/designMode/observer.html" class="sidebar-link">发布订阅模式</a></li><li><a href="/advanced/designMode/proxy.html" class="sidebar-link">代理模式</a></li><li><a href="/advanced/designMode/strategy.html" aria-current="page" class="active sidebar-link">策略模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/advanced/designMode/strategy.html#策略模式" class="sidebar-link">策略模式</a></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Vue进阶</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>浏览器</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="策略模式"><a href="#策略模式" class="header-anchor">#</a> 策略模式</h2> <h3 id="_1-定义"><a href="#_1-定义" class="header-anchor">#</a> 1.定义</h3> <p>定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。</p> <h3 id="_2-核心"><a href="#_2-核心" class="header-anchor">#</a> 2.核心</h3> <p>将算法的使用和算法的实现分离开来。<br>
+一个基于策略模式的程序至少由两部分组成:<br>
+第一个部分是一组策略类，策略类封装了具体的算法，并负责具体的计算过程。<br>
+第二个部分是环境类Context，Context接收客户的请求，随后把请求委托给某一个策略类。要做到这点，说明Context中要维持对某个对象的引用。</p> <h3 id="_3-实现"><a href="#_3-实现" class="header-anchor">#</a> 3.实现</h3> <p>策略模式可以用于组合一系列算法，也可以用于组合一系列业务规则<br>
+假设需要通过成绩来计算学生的最终得分，每个成绩等级有对应得加权值。我们可以利用对象字面量的形式直接定义这个策略组。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// 映射关系</span>
+<span class="token keyword">var</span> levelMap <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token constant">S</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+    <span class="token constant">A</span><span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+    <span class="token constant">B</span><span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+    <span class="token constant">C</span><span class="token operator">:</span> <span class="token number">4</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 组策略</span>
+<span class="token keyword">var</span> scoreLevel <span class="token operator">=</span> <span class="token punctuation">{</span>
+    basicScore<span class="token operator">:</span> <span class="token number">80</span><span class="token punctuation">,</span>
+    
+    <span class="token function-variable function">S</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>basicScore <span class="token operator">+</span> levelMap<span class="token punctuation">[</span><span class="token string">'S'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    
+    <span class="token function-variable function">A</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>basicScore <span class="token operator">+</span> levelMap<span class="token punctuation">[</span><span class="token string">'A'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    
+    <span class="token function-variable function">B</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>basicScore <span class="token operator">+</span> levelMap<span class="token punctuation">[</span><span class="token string">'B'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    
+    <span class="token function-variable function">C</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>basicScore <span class="token operator">+</span> levelMap<span class="token punctuation">[</span><span class="token string">'C'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 调用</span>
+<span class="token keyword">function</span> <span class="token function">getScore</span> <span class="token punctuation">(</span><span class="token parameter">level</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> scoreLevel<span class="token punctuation">[</span>level<span class="token punctuation">]</span> <span class="token operator">?</span> scoreLevel<span class="token punctuation">[</span>level<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>
+    <span class="token function">getScore</span><span class="token punctuation">(</span><span class="token string">'S'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">getScore</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">getScore</span><span class="token punctuation">(</span><span class="token string">'B'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">getScore</span><span class="token punctuation">(</span><span class="token string">'C'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">getScore</span><span class="token punctuation">(</span><span class="token string">'D'</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 90 88 86 84 0</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br></div></div><p>在组合业务规则方面，比较经典的就是表单的验证方法。</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// 错误提示</span>
+<span class="token keyword">var</span> errorMsgs <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token keyword">default</span><span class="token operator">:</span> <span class="token string">'输入数据格式不正确'</span><span class="token punctuation">,</span>
+    minLength<span class="token operator">:</span> <span class="token string">'输入数据长度不足'</span><span class="token punctuation">,</span>
+    isNumber<span class="token operator">:</span> <span class="token string">'请输入数字'</span><span class="token punctuation">,</span>
+    required<span class="token operator">:</span> <span class="token string">'内容不为空'</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 规则集</span>
+<span class="token keyword">var</span> rules <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">minLength</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span> length<span class="token punctuation">,</span> errorMsg</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>value<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> errorMsg <span class="token operator">||</span> errorMsgs<span class="token punctuation">[</span><span class="token string">'minLength'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    
+    <span class="token function-variable function">isNumber</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span> errorMsg</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\d+</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> errorMsg <span class="token operator">||</span> errorMsgs<span class="token punctuation">[</span><span class="token string">'isNumber'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    
+    <span class="token function-variable function">required</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span> errorMsg</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>value <span class="token operator">===</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> errorMsg <span class="token operator">||</span> errorMsgs<span class="token punctuation">[</span><span class="token string">'required'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">Validator</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>items <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token class-name">Validator</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span> <span class="token punctuation">{</span>
+    constructor<span class="token operator">:</span> Validator<span class="token punctuation">,</span>
+    
+    <span class="token comment">// 添加校验规则</span>
+    <span class="token function-variable function">add</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span> rule<span class="token punctuation">,</span> errorMsg</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> arg <span class="token operator">=</span> <span class="token punctuation">[</span>value<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>rule<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'minLength'</span><span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">var</span> temp <span class="token operator">=</span> rule<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">':'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            arg<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>temp<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            rule <span class="token operator">=</span> temp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    
+        arg<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>errorMsg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token keyword">this</span><span class="token punctuation">.</span>items<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> rules<span class="token punctuation">[</span>rule<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> arg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    
+    <span class="token comment">// 开始校验</span>
+    <span class="token function-variable function">start</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>items<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">var</span> ret <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>items<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>ret<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ret<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 测试数据</span>
+<span class="token keyword">function</span> <span class="token function">testTel</span> <span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> val<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> validate <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Validator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+validate<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token function">testTel</span><span class="token punctuation">(</span><span class="token string">'ccc'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'isNumber'</span><span class="token punctuation">,</span> <span class="token string">'只能为数字'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 只能为数字</span>
+validate<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token function">testTel</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'required'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 内容不为空</span>
+validate<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token function">testTel</span><span class="token punctuation">(</span><span class="token string">'123'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'minLength:5'</span><span class="token punctuation">,</span> <span class="token string">'最少5位'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 最少5位</span>
+validate<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token function">testTel</span><span class="token punctuation">(</span><span class="token string">'12345'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'minLength:5'</span><span class="token punctuation">,</span> <span class="token string">'最少5位'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> ret <span class="token operator">=</span> validate<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>ret<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br></div></div><h3 id="_4-优缺点"><a href="#_4-优缺点" class="header-anchor">#</a> 4.优缺点</h3> <p>优点：可以有效地避免多重条件语句，将一系列方法封装起来也更直观，利于维护。<br>
+缺点：往往策略集会比较多，我们需要事先就了解定义好所有的情况。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/advanced/designMode/proxy.html" class="prev">
+        代理模式
+      </a></span> <span class="next"><a href="/advanced/vue/notice.html">
+        vue注意点
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.b45ba90d.js" defer></script><script src="/assets/js/2.be6c4511.js" defer></script><script src="/assets/js/13.6711ccfc.js" defer></script>
+  </body>
+</html>
