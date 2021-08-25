@@ -78,7 +78,7 @@ module.exports = [
         collapsable: true,
         children: [
             {
-                title: "浏览器的缓存机制222",
+                title: "浏览器的缓存机制",
                 path: "/advanced/http/浏览器的缓存机制"
             },
             {
