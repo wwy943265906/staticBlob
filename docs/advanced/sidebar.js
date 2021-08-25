@@ -24,7 +24,7 @@ module.exports = [
                 path: "/advanced/writingCode/create"
             },
             {
-                title: "手写防抖与节流333",
+                title: "手写防抖与节流333纯纯粹粹",
                 path: "/advanced/writingCode/防抖与节流"
             },
             {
