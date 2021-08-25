@@ -24,7 +24,7 @@ module.exports = [
                 path: "/advanced/writingCode/create"
             },
             {
-                title: "手写防抖与节流",
+                title: "手写防抖与节流333",
                 path: "/advanced/writingCode/防抖与节流"
             },
             {
@@ -32,7 +32,7 @@ module.exports = [
                 path: "/advanced/writingCode/deepCopy"
             },
             {
-                title: "图片懒加载2222333",
+                title: "图片懒加载",
                 path: "/advanced/writingCode/图片懒加载"
             },
         ]
