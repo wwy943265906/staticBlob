@@ -86,8 +86,8 @@ module.exports = [
                 path: "/advanced/http/storage"
             },
             {
-                title: "回流与重绘2221111",
-                path: "/advanced/http/回流与重绘1111"
+                title: "回流与重绘",
+                path: "/advanced/http/回流与重绘"
             },
             {
                 title: "XSS与CSRF",
