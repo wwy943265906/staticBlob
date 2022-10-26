@@ -324,7 +324,7 @@ function patch (oldVnode, vnode, hydrating, removeOnly) {
 其实，我们可以不用全部弄懂其中的意思，将代码折叠起来之后，代码呈现的大结构才是我们所需要探讨的。
 
 折叠之后如下图：
-<img :src="$withBase('/imgs/diff.png')" alt="mixureSecure">
+![avatar](/docs/.vuepress/public/imgs/diff.png)
 
 我们可以很清晰的看到，其实就是我们上面所说的三种情况：
 - 新节点不存在，老节点存在时，直接销毁
@@ -350,7 +350,7 @@ if (isDef(oldVnode)) invokeDestroyHook(oldVnode)
 源码位置：src\core\vdom\patch.js\createElm函数
 ::: 
 
-<img :src="$withBase('/imgs/diff2.png')" alt="mixureSecure">
+![avatar](/docs/.vuepress/public/imgs/diff2.png)
 
 - 判断是否为元素节点只需判断该VNode节点是否有tag标签即可。如果有tag属性即认为是元素节点，则调用createElement方法创建元素节点，通常元素节点还会有子节点，那就递归遍历创建所有子节点，将所有子节点创建好之后insert插入到当前元素节点里面，最后把当前元素节点插入到DOM中。
 - 判断是否为注释节点，判断完成插入到DOM中。
@@ -358,7 +358,7 @@ if (isDef(oldVnode)) invokeDestroyHook(oldVnode)
 
 流程图如下：
 
-<img :src="$withBase('/imgs/diff3.png')" alt="mixureSecure">
+![avatar](/docs/.vuepress/public/imgs/diff3.png)
 
 #### 更新节点
 首先先来看一下源码
@@ -367,7 +367,7 @@ if (isDef(oldVnode)) invokeDestroyHook(oldVnode)
 源码位置：src\core\vdom\patch.js\patchVnode函数
 ::: 
 
-<img :src="$withBase('/imgs/diff4.png')" alt="mixureSecure">
+![avatar](/docs/.vuepress/public/imgs/diff4.png)
 
 我们这里可以看到清晰的判断流程。
 
@@ -391,7 +391,7 @@ if (oldVnode === vnode) {
 
 流程图如下：
 
-<img :src="$withBase('/imgs/diff5.png')" alt="mixureSecure">
+![avatar](/docs/.vuepress/public/imgs/diff5.png)
 
 我们可以第三步中看到，如果新旧节点都有子节点的话，那么调用一个updateChildren的函数。
 
@@ -404,7 +404,7 @@ if (oldVnode === vnode) {
 
 首先，我们先来看一下updateChildren函数。源码折叠图如下：
 
-<img :src="$withBase('/imgs/diff6.png')" alt="mixureSecure">
+![avatar](/docs/.vuepress/public/imgs/diff6.png)
 
 看到代码中的变量，我们先来分析一下有什么用？
 
@@ -419,7 +419,8 @@ oldStartVnode、newStartVnode、oldEndVnode和new EndVnode分别指向这几个�
 接下来，我们看一下，vue中是怎么优化的。
 
 这是两个新旧VNode的例子图：
-<img :src="$withBase('/imgs/diff7.png')" alt="mixureSecure">
+
+![avatar](/docs/.vuepress/public/imgs/diff7.png)
 
 首先我们先来看下这两个判断：
 ``` js
@@ -467,27 +468,29 @@ else if (sameVnode(oldStartVnode, newStartVnode)) {
 
 1. 第一种情况，判断旧前节点是否与新前节点是相同，如果相同则直接去patchVnode，然后将oldStartIdx++，newStartIdx++。如果不是相同节点，那么接着往下判断。如下图：
 
-<img :src="$withBase('/imgs/diff8.png')" alt="mixureSecure">
+
+![avatar](/docs/.vuepress/public/imgs/diff8.png)
 
 2. 第二种情况，判断旧后节点是否与新后节点是相同，如果相同则直接去patchVnode，然后将oldEndIdx--，newEndIdx--。如果不是相同节点，那么接着往下判断。如下图：
 
-<img :src="$withBase('/imgs/diff9.png')" alt="mixureSecure">
+
+![avatar](/docs/.vuepress/public/imgs/diff9.png)
 
 3. 第三种情况，判断新后节点是否与旧前节点是相同，如果相同则直接去patchVnode，然后将旧前节点移至旧后位置后面，将oldStartIdx++，newEndIdx--。如果不是相同节点，那么接着往下判断。如下图：
 
-<img :src="$withBase('/imgs/diff10.png')" alt="mixureSecure">
+![avatar](/docs/.vuepress/public/imgs/diff10.png)
 
 ---
 
-<img :src="$withBase('/imgs/diff11.png')" alt="mixureSecure">
+![avatar](/docs/.vuepress/public/imgs/diff11.png)
 
 3. 第四种情况，判断旧后节点是否与新前节点是相同，如果相同则直接去patchVnode，然后将旧后节点移至旧前位置前面，将newStartIdx++，oldEndIdx--。如果不是相同节点，那么接着往下判断。如下图：
 
-<img :src="$withBase('/imgs/diff12.png')" alt="mixureSecure">
+![avatar](/docs/.vuepress/public/imgs/diff12.png)
 
 ---
 
-<img :src="$withBase('/imgs/diff13.png')" alt="mixureSecure">
+![avatar](/docs/.vuepress/public/imgs/diff13.png)
 
 最后，我们来看下如果四种情况都不符合是如何处理的，源码如下：
 ``` js
@@ -607,10 +610,10 @@ list: [
 以此为例子，我删除了id为2的对象过后，就会出现问题了。
 
 删除前：
-<img :src="$withBase('/imgs/diff14.png')" alt="mixureSecure">
+![avatar](/docs/.vuepress/public/imgs/diff14.png)
 
 删除后：
-<img :src="$withBase('/imgs/diff15.png')" alt="mixureSecure">
+![avatar](/docs/.vuepress/public/imgs/diff15.png)
 
 可以看到，原本按我们的想法的话，删除了对象2过后，我们的key应该是0,2,3的，那么这样就导致了一个问题，新的节点跟旧的节点的匹配，是id1 -> id1，id3 -> id2，id4 -> id3的。
 
